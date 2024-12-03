@@ -1,0 +1,219 @@
+{%load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.css">
+
+
+<script src="https://kit.fontawesome.com/d7be2cc6af.js" crossorigin="anonymous"></script>
+<style type="text/css">
+	.an{text-decoration: none; color:#162542; font-size: 17px}
+	.nv{text-decoration: none; color:#162542; font-size: 17px}
+	.nav:hover{background-color:#125875;}
+	.nav{background-color:#FF7350;height:88px}
+	p{font-size: 14px; color: #B2C0D8;}
+	.a1{color: #B2C0D8; text-decoration: none; font-size:15px}
+	.img1{height: 60px; width: 58px;}
+</style>
+<body>
+<!-- Section 1 Start-->
+	<div class="row" style="background-color: #125875;">
+		<div class="col-3 text-light text-center pt-4" style="background-color: #FF7350;clip-path: polygon(0 0, 88% 0, 100% 100%, 0% 100%);">
+			<b><span style="font-size: 18px;">Follow us :-
+			&emsp;<a target="_blank" href="https://www.facebook.com/" title="Facebook"><i class="fa-brands fa-facebook-f" style="font-size:18px; color: white"></i></a>&emsp;
+			<a target="_blank" href="https://www.instagram.com/" title="Instagram"><i class="fab fa-instagram" style="font-size:18px; color: white;"></i></a>&emsp;
+			<a target="_blank" href="https://web.whatsapp.com/" title="Whatsapp"><i class="fa-brands fa-whatsapp" style="font-size:18px; color: white;"></i></a>&emsp;
+			<a target="_blank" href="https://www.youtube.com/" title="Youtube"><i class="fa-brands fa-youtube" style="font-size:18px; color: white;"></i></a></span></b>
+		</div>	
+		<div class="col-3"></div>
+		<div class="col-6 text-light text-center p-3" style="background-color: #125875;">
+			<div class="row">
+			<div class="col-3 text-end">
+				<img src="{%static 'images\phone-call.png' %}" alt="image" style="height: 45px; width: 42px;">
+			</div>	
+			<div class="col-3 text-start">
+				<p class="text-light">Call Now!
+				<br><b class="text-light">+91-7009646412</b></p>	
+			</div>
+			<div class="col-1 border-start text-end">
+				<img src="{%static 'images\mailing.png' %}" alt="image" style="height: 38px; width: 36px;"><br>
+			</div>
+			<div class="col-5 text-start">
+				<p class="text-light">Email Now<br/>
+				<b class="text-light">navpreetsingh46412@gmail.com</b></p>
+			</div>
+			</div>
+	</div>
+</div>
+<!-- Section 1 End -->
+
+<!--  Navbar -->
+
+<div class="row sticky-top "style="background-color: white;">
+	<div class="col-md-2 ps-5">
+		<a href="{% url 'Home' %}"><img src="{%static 'images\EduTech Logo.png' %}" alt="image" style="height:80px; width:125px;"></div></a>
+    <div class="col-md-7 pt-3 pb-3" style="text-align:center;">
+    <nav class="navbar navbar-expand-lg ">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <b><a class="nav-link active" aria-current="page" href="{% url 'Home' %}">Home</a></b>
+        </li>&emsp;       
+        <li class="nav-item">
+          <b><a class="nav-link" href="{% url 'AboutUs' %}" style="color:black;">About Us</a></b>
+        </li>&emsp; 
+        <b><li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:black">Education</a>
+          <ul class="dropdown-menu" style="color:black;padding-left: 8px; padding-right: 8px;">
+            <li><b><a class="dropdown-item" href="{% url 'Colleges' %}" style="color:black">Colleges</a></b></li>
+            <li><a class="dropdown-item" href="{% url 'University' %}" style="color:black">University</a></li>
+            <li><a class="dropdown-item" href="{% url 'Laws' %}" style="color:black">Laws</a></li>
+          </ul>
+        </li></b>&emsp; 
+        <li class="nav-item">
+         <b><a class="nav-link" href="{% url 'Coordinators' %}" style="color:black">National Coordinators</a> </b>
+        </li>&emsp; 
+        <li class="nav-item">
+         <b> <a class="nav-link" href="{% url 'LatestNews' %}" style="color:black">Latest News</a> </b>
+        </li>&emsp; 
+        <li class="nav-item">
+         <b> <a class="nav-link" href="{% url 'Articles' %}" style="color:black">Blogs</a> </b>
+        </li>&emsp; 
+        <li class="nav-item">
+         <b> <a class="nav-link" href="{% url 'Contact' %}" style="color:black">Contact</a> </b>
+        </li>
+      </ul>
+  </div>
+  </nav>
+</div>
+
+
+<div class="col-md-3">
+	<div class="nav pb-3" style="padding-top:20px; padding-left:46px;">
+		<b><a href="{% url 'Login' %}" class="btn text-light " style="font-size:20px;">LOGIN</a>
+		<b class="text-light">|</b>
+		<a href="{% url 'Register' %}"  class="btn text-light" style="font-size:20px;">REGISTER</a></b>
+		</div>
+	</div>
+</div>
+
+<!-- Navbar End -->
+
+{%block content%}
+{%endblock %}
+
+<!-- Section 12 Start -->
+<div class="container-fluid" style="overflow-x:hidden">
+	<div class="row pt-4 pb-4" style="background-color:#125875">
+		<div class="col-2"></div>
+		<div class="col-1 pt-3">
+			<img data-aos="fade-right" src="{%static 'images\mail.png' %}" alt="image"></div>
+			<div class="col-4 pt-3">
+			<h2 data-aos="fade-right" class="text-light">Subscribe For Newsletter</h2>
+			<p data-aos="fade-right"  class="text-light">Manage Your Business With Our Software.</p></div>
+			<div class="col-4 pt-3">
+					<form method="POST" action="{% url 'Success' %}">
+		{% csrf_token %}
+		{% if msg %}
+		<div class="alert alert-success" role="alert">
+	{{msg}}
+</div>
+{% endif %}
+{% if Error %}
+		<div class="alert alert-danger" role="alert">
+	{{Error}}
+</div>
+{% endif %}<div class="input-group flex-nowrap">
+  <input type="email" class="form-control rounded-0 " style="padding:9px 20px" name="em" placeholder="Email Address" required>
+  <button type="submit" class="btn btn-lg text-light" style="background-color:#FF7350">Submit</button>
+</div>
+</div>
+			<div class="col-1"></div>
+		</div>
+</form>
+</div>
+</div>
+</div>
+
+<!-- Section 12 End -->
+
+<!-- Footer Start -->
+<!-- section 1 Start -->
+<footer class=" pt-4 pb-4 text-light p-4" style="background-color: #032E3F;">
+	<div class="container-fluid" style="overflow-x:hidden">
+		<div class="row ps-4 pe-4">
+		<div class="col-3">
+			<h2 style="font-size: 24px;"><span style="border-bottom:2px solid #FF7350; padding-bottom: 5px; color:whitesmoke !important; text-align:left !important">About Us</span></h2><br>
+			<p style="color: whitesmoke;">The EduTech project is designed to revolutionize education through comprehensive data analysis, statistics, and predictive modeling. It examines critical factors influencing student success, course effectiveness, and dropout rates. It includes statistical insights, course evaluations, and predictive modeling to assess factors affecting dropout likelihood. EduTech enhances personalized learning experiences, supporting personalized learning paths and effective resource allocation.</p>
+		<a href="https://www.instagram.com/"><i class="fab fa-instagram"  style="color: #FF7350; font-size:27px;"></i></a> &emsp;
+		<a href="https://www.facebook.com/"><i class="fa-brands fa-facebook-f"  style="color: #FF7350; font-size:27px;"></i></a>&emsp;
+		<a href="https://web.whatsapp.com/"><i class="fa-brands fa-whatsapp"  style="color: #FF7350; font-size:27px;"></i></a>
+		</div>
+
+		<div class="col-3 ps-4 pe-4">
+			<h2 style="font-size: 24px;"><span style="border-bottom: 2px solid #FF7350; padding-bottom: 5px; color:whitesmoke !important; text-align:left !important">Our Links</span></h2><br>
+			<a class="a1" style="color:whitesmoke" href="{% url 'Home' %}">Home</a><hr>
+			<a class="a1" style="color:whitesmoke" href="{% url 'Articles' %}">Blogs</a><hr>
+			<a class="a1" style="color:whitesmoke" href="{% url 'Contact' %}">Contact</a><hr>
+			<a class="a1" style="color:whitesmoke" href="{% url 'AboutUs' %}">About Us</a><hr>
+		</div>
+
+		<div class="col-3">
+			<h2 style="font-size: 24px;"><span style="border-bottom:2px solid #FF7350; padding-bottom:5px; color:whitesmoke !important; text-align:left !important">Latest Post</span></h2><br>
+			<div class="row">
+				<div class="col-3">
+					<img class="img1" src="{%static 'images\edu1.png' %}" alt="image"><br><br>
+					<img class="img1" src="{%static 'images\edu2.png'%}" alt="image">
+				</div>
+				<div class="col-9">
+					<p style="color:whitesmoke" >The Biden Administration Touts Its Big Year in AI</p><br>
+					<p style="color:whitesmoke">‘Not my King’ protest row highlights Australian divisions</p>	
+				</div>
+			</div>		
+		</div>
+
+		<div class="col-3">
+		<h2 style="font-size: 24px;"><span style="border-bottom:2px solid #FF7350; padding-bottom: 5px; color:whitesmoke !important; text-align:left !important">Contact Us</span></h2><br>
+		<i class="fa-sharp fa-solid fa-phone-volume" style="color: #FF7350; font-size:26px;"></i>&emsp;
+		<a1 href="">+91-7009646412</a1><br><br>
+		<i class="fa-sharp fa-solid fa-envelope" style="color: #FF7350; font-size:25px;"></i>&emsp;
+		<a1 href="">navpreetsingh46412@gmail.com</a1><br><br>
+		<i class="fa-solid fa-location-dot" style="color: #FF7350; font-size:26px;"></i>&emsp;
+		<a1 href="">Plot No.39, Sultanwind Road Asr.</a1><br>
+	</div>
+</div>
+</div>
+</footer>
+<!-- section 1 End -->
+
+<!-- Section 2 Start -->
+<div style="background-color: #FF7350; padding: 12px;">
+<div class="row ps-3 pe-3">
+	<div class="col-4">
+		<a href=""><img class="img1" src="{%static 'images/EduTechL.png' %}" alt="image" style="height:60px; width:180px;"></a></div>
+	<div class="col-8 text-end text-light pt-2" style="font-size: 18px;">Designed EduTech 2024 . Navpreet Singh.</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+<!-- Section 2 End -->
+
+
+<script type="text/javascript" src="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.js"></script>
+<script type="text/javascript">
+	AOS.init({
+  duration:1600
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+{%extends 'Sidebar.html' %}
+{% block content %}
+{%load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/d7be2cc6af.js" crossorigin="anonymous"></script>
+<style type="text/css">
+a{ text-decoration: none; font-size:14px}
+.icons{display: inline-flex; justify-content: center; align-items: center; width: 50px; height: 50px; border-radius: 50%;color: white;font-size: 24px;}
+.b1{background-color:#2c3e50;border-radius:20px; padding: 10px}
+.b1:hover{background-color:#858F99}
+
+
+</style>
+<body>
+<!-- Section 1 Start -->
+<div class="container-fluid" style="overflow-x:hidden";>
+<div class="row pt-5 pb-5 ps-5 pe-5">
+	<div class="col-1"></div>
+	<div class="col-md-4 p-4" style="border-top-left-radius: 25px; border-bottom-left-radius: 25px;;height:550px; background: linear-gradient(110deg,#3835B1,#01C1FC);border: 2px solid black; box-shadow:  0 0 20px 0 black;">
+		{% if user.ProfileImg %}
+			<center><img src="{{user.ProfileImg.url}}" class="rounded-circle" height="240px" width="235px" style="border:5px solid black;"></center>
+			{% else %}
+			<center><img src="default" class="rounded-circle" height="240px" width="235px" style="border:5px solid black;"></center>
+			{% endif %}<br>
+			<b><center><p style="color:lightgrey;">{{user.Name}}</p></center></b>
+			<b><center><p style="color:lightgrey;">{{user.Email}}</p></center></b>
+			 <center><a href="{% url 'Edit Profile' %}" class="btn btn-lg rounded-pill ps-5 pe-5 b1 text-light" style="">Edit Profile</center></a><br>
+			<div class="icons_" style="padding-left:38px;">
+				<a target="_blank" class="icons" style="background-color:#3B5998;" href="https://www.facebook.com/" title="Facebook"><i class="fa-brands fa-facebook"></i></a>&emsp;
+			<a target="_blank" class="icons" style="background: linear-gradient(40deg,#405DE6,#5851DB,#833AB4,#C13584,#E1306C,#FD1D1D);"; href="https://www.instagram.com/" title="Instagram" ><i class="fab fa-instagram"></i></a>&emsp;
+			<a target="_blank" class="icons" style="background-color:#28D146" href="https://web.whatsapp.com/" title="Whatsapp"><i class="fa-brands fa-whatsapp"></i></a>&emsp;
+			<a target="_blank" class="icons" style="background-color:#FF0000" href="https://www.youtube.com/" title="Youtube"><i class="fa-brands fa-youtube"></i></a>
+		</div>
+</div>
+	<div class="col-md-6 p-4" style="border-top-right-radius: 25px;border-bottom-right-radius: 25px;border:2px solid black;background-color:ghostwhite;box-shadow:  0 0 20px 0 black;">
+	<center><h3 style="color: #353CB5; padding-bottom:5px;">MY PROFILE</h3></center>
+	<div class="row pt-5 pb-5">
+	<div class="col-1"></div>
+	<div class="col-4">
+		<p><b>Name:</b></p>
+		<p><b>Email:</b></p>
+		<p><b>Phone No:</b></p>
+		<p><b>DOB:</b></p>
+		<p><b>Pincode:</b></p>
+		<p><b>City:</b></p>
+		<p><b>Address:</b></p>
+	</div>
+
+	<div class="col-4">
+		<p style="color:#0236F3">{{user.Name}}</p>
+		<p style="color:#0236F3">{{user.Email}}</p>
+		<p style="color:#0236F3">{{user.PhoneNo}}</p>
+		<p style="color:#0236F3">{{user.DOB}}</p>
+		<p style="color:#0236F3">{{user.Pincode}}</p>
+		<p style="color:#0236F3">{{user.City}}</p>
+		<p style="color:#0236F3">{{user.Address}}</p>
+	</div>
+	<div class="col-2"></div>
+</body>
+</html>
+{% endblock %}
+<!-- Section 1 End -->
+

@@ -1,0 +1,469 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ICONS -->
+    <script type="text/javascript">
+    (function() {
+        // Function to prevent back navigation
+        var preventBack = function() {
+            window.history.forward();
+        };
+
+        // Modify the browser history state when the page loads
+        window.onload = function() {
+            preventBack(); // Prevent backward navigation on page load
+
+            // Push a state to override the current page in history, so back won't work
+            window.history.pushState(null, null, window.location.href);
+        };
+
+        // Re-apply history push on page show if page was cached
+        window.onpageshow = function(evt) {
+            if (evt.persisted) {
+                window.history.pushState(null, null, window.location.href);
+            }
+        };
+
+        // Ensure the page can't be unloaded via back navigation
+        window.onunload = function() {};
+    })();
+</script>
+    <script src="https://kit.fontawesome.com/d7be2cc6af.js" crossorigin="anonymous"></script>
+    <!-- STYLESHEET -->
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+
+      /* Reset CSS */
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+/*        font-family:"Inter", sans-serif ;*/
+      }
+
+      .container1{
+        width: 100%;
+        min-height:100vh;
+      }
+      .sidebar{
+        width: 256px;
+        height:100vh;
+        display: flex;
+        flex-direction: column;
+        gap:24px;
+        background-color:#E2E2E2;
+        padding: 24px;
+        border-bottom-right-radius: 20px;
+        border: 1px solid black;
+        position: fixed;
+        transition: all 0.5s;
+      }
+      .sidebar .head{
+        display: flex;
+        gap: 20px;
+        padding-bottom:20px;
+        border-bottom:2px solid #0052D4;
+      }
+      .user-img_1{
+        height:60px;
+        width:60px;
+        border-radius:52%;
+        overflow: hidden;
+        border: 2px solid black;
+      }
+      .user-img_1 img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+      .user-details .title,
+      .menu .title{
+        padding-top:10px;
+        margin-bottom: 3px;
+      }
+      .navi{
+        flex: 2;
+      }
+
+      .menu ul li{
+        position: relative;
+        list-style: none;
+       margin-bottom:8px;
+      }
+      .menu ul li a{
+        display: flex;
+        align-items: center;
+        gap:20px;
+        font-size:14px;
+        color: black;
+        text-decoration: none;
+        padding: 10px 10px;
+        border-radius: 15px;
+        transition: all 0.5s;
+      }
+
+      .endmenu ul li{
+         position: relative;
+        list-style: none;
+       margin-bottom:8px;
+      }
+      .endmenu ul li a{
+        display: flex;
+        align-items: center;
+        gap:25px;
+        font-size:14px;
+        color: black;
+        text-decoration: none;
+        padding: 10px 10px;
+        border-radius: 15px;
+        transition: all 0.5s;
+      }
+      .endmenu ul li > a:hover,
+      .endmenu ul li.active > a{
+      color:white;
+      background-color: #0052D4;
+      }
+      .endmenu ul li .icon {
+        font-size:16px;
+      }
+      .endmenu ul li .text{
+        flex: 1;
+      }
+
+      .menu ul li > a:hover,
+      .menu ul li.active > a{
+      color:white;
+      background-color: #0052D4;
+      }
+      .menu ul li .icon {
+        font-size:17px;
+      }
+      .menu ul li .text{
+        flex: 1;
+      }
+      .menu ul li .arrow{
+        font-size: 14px;
+        transition: 0.4s;
+      }
+      .menu ul li.active .arrow{
+        transform: rotate(180deg);
+      }
+      .menu .sub-menu{
+        display: none;
+        padding-top: 4px;
+        background-color: ghostwhite;
+        border-radius: 20px;
+      }
+      .menu .sub-menu li a{
+        padding: 10px 25px;
+        font-size: 12px;
+      }
+      .menu:not(:last-child) {
+        padding-bottom:250px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid black;
+      }
+      .endmenu ul{
+        padding-top: 10px;
+        border-top: 2px solid #0052D4;
+        position: relative;
+      }
+
+      .menu-btn{
+        position: absolute;
+        right: -14px;
+        top: 3.5%;
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #dd1818;
+        cursor: pointer;
+        color: black;
+        border-radius: 20px;
+      }
+      .menu-btn:hover i{
+        color: whitesmoke;
+      }
+      .menu-btn i{
+        transition: all 0.3s;
+      }
+      .sidebar.active{
+        width: 92px;
+        float:left;
+      }
+      .sidebar.active .menu-btn i{
+        transform: rotate(180deg);
+      }
+      .sidebar.active .user-details{
+        display: none;
+      }
+      .sidebar.active .menu .title{
+        text-align: center;
+      }
+      .sidebar.active .menu ul li .arrow{
+        display: none;
+      }
+      .sidebar.active .menu > ul > li > a{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .sidebar.active .menu > ul > li > a .text{
+        position: absolute;
+        left: 70px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 10px;
+        border-radius: 4px;
+        color: white;
+        background-color: black;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s;
+      }
+      .sidebar.active .menu > ul > li > a .text::after{
+        content: "";
+        position: absolute;
+        left: -5px;
+        top: 20%;
+        width: 20px;
+        height: 20px;
+        border-radius: 2px;
+        background-color: black;
+        transform: rotate(45deg);
+        z-index: -1;
+      }
+      .sidebar.active .menu > ul > li > a:hover .text{
+        left: 100px;
+        opacity: 1;
+        visibility: visible;
+      }
+      .sidebar.active .menu .sub-menu{
+        position: absolute;
+        top: 0;
+        left: 50px;
+        width: 210px;
+        border-radius: 20px;
+        padding: 12px 20px;
+        border: 1px solid whitesmoke;
+        background-color: white;
+        box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .sidebar.active .endmenu .title{
+        text-align: center;
+      }
+      .sidebar.active .endmenu ul li .arrow{
+        display: none;
+      }
+      .sidebar.active .endmenu > ul > li > a{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .sidebar.active .endmenu > ul > li > a .text{
+        position: absolute;
+        left: 70px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 10px;
+        border-radius: 4px;
+        color: white;
+        background-color: black;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s;
+      }
+      .sidebar.active .endmenu > ul > li > a .text::after{
+        content: "";
+        position: absolute;
+        left: -5px;
+        top: 20%;
+        width: 20px;
+        height: 20px;
+        border-radius: 2px;
+        background-color: black;
+        transform: rotate(45deg);
+        z-index: -1;
+      }
+      .sidebar.active .endmenu > ul > li > a:hover .text{
+        left: 100px;
+        opacity: 1;
+        visibility: visible;
+      }
+      .sidebar.active .endmenu .sub-menu{
+        position: absolute;
+        top: 0;
+        left: 50px;
+        width: 210px;
+        border-radius: 20px;
+        padding: 10px 20px;
+        border: 1px solid whitesmoke;
+        background-color: white;
+        box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.1);
+      }
+      .user-details .title{
+        font-size: 15px;
+      }
+      .user-details .name{
+        font-size: 15px;
+      }
+      ol, ul {
+     padding-left: 0rem !important;
+}
+.content{
+   transition:0.5s;
+   margin-left: 92px;
+
+}
+    </style>
+  </head>
+  <body>
+   <div class="container1">
+
+  <div class="sidebar active">
+    <div class="menu-btn">
+      <i class="fa-sharp fa-solid fa-caret-left"></i>
+    </div>
+    <div class="head">
+      <div class="user-img_1">
+          <img src="{% static 'images/EduTech.png' %}" alt="image" />
+      </div>
+      <div class="user-details">
+        <h4 class="title">EDUTECH</h4>
+        <h4 class="name">{{user.Name}}</h4>
+      </div>
+    </div>
+   
+    <!-- Main Navigation with Dropdowns -->
+    <div class="navi">
+      <div class="menu">
+        <ul>
+          <li class="active">
+            <a href="{% url 'Dashboard' %}">
+              <i class="icon fa-sharp fa-solid fa-house"></i>
+              <span class="text">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="icon fa-duotone fa-solid fa-user"></i>
+              <span class="text">Account</span>
+              <i class="arrow fa-solid fa-caret-down"></i>
+            </a>
+            <ul class="sub-menu">
+              <li><a href="{% url 'User Profile' %}"><span class="text">User Profile</span></a></li>
+              <li><a href="{% url 'Edit Profile' %}"><span class="text">Edit Profile</span></a></li>
+              <li><a href="{% url 'Change Password' %}"><span class="text">Change Password</span></a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="{% url 'Analytics' %}">
+            <i class="icon fa-sharp fa-solid fa-chart-line"></i>
+              <span class="text">Analytics</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+             <i class="icon fa-sharp fa-solid fa-graduation-cap"></i>
+              <span class="text">Student Dropout</span>
+              <i class="arrow fa-solid fa-caret-down"></i>
+            </a>
+            <ul class="sub-menu">
+              <li><a href="{% url 'StudentAnalysis' %}"><span class="text">Analysis</span></a></li>
+              <li><a href="{% url 'Student_Prediction' %}"><span class="text">Prediction</span></a></li>
+            </ul>
+          </li>
+
+          <li>
+          <a href="{% url 'Courses' %}">
+          <i class="icon fa-sharp fa-solid fa-book"></i>
+            <span class="text">Courses</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'States' %}">
+           <i class="icon fa-sharp fa-solid fa-globe"></i>
+            <span class="text">States And UT's</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'Statistics' %}">
+             <i class="icon fa-sharp fa-solid fa-file"></i>
+            <span class="text">Statistics</span>
+          </a>
+        </li>
+        </ul>
+      </div>
+  </div>
+  <div class="endmenu">
+      <ul>
+        <li>
+          <a href="{% url 'HelpAndSupport' %}">
+           <i class="icon fa-sharp fa-solid fa-question-circle"></i>
+            <span class="text">Help And Support</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'Logout' %}">
+           <i class="icon fa-sharp fa-solid fa-sign-out-alt"></i>
+            <span class="text">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+</div>
+<div class="content">
+{%include 'Chatbot.html' %}  
+{% block content %}
+{% endblock %}
+</div>
+    <!-- Jquery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
+      integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(".menu > ul > li").has("ul").click(function (e){
+  // remove active from already active //
+  $(this).siblings().removeClass("active");
+  // add active to clicked //
+  $(this).toggleClass("active");
+  // if it has submenu open it //
+  $(this).find("ul").slideToggle();
+  // Close other sub menu if any open //
+  $(this).siblings().find("ul").slideUp();
+  // remove active class of sub menu items //
+  $(this).siblings().find("ul").find("li").removeClass("active");
+});
+
+   $(".menu-btn").click(function () {
+        $(".sidebar").toggleClass("active");
+
+        // Adjust content margin based on sidebar state
+        if ($(".sidebar").hasClass("active")) {
+          $(".content").css("margin-left", "92px");
+          // location.reload();
+        } else {
+          $(".content").css("margin-left", "256px");
+
+
+        }
+      });
+
+    </script>
+  </body>
+</html>

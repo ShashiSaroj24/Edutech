@@ -1,0 +1,69 @@
+{% extends 'Sidebar.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/d7be2cc6af.js" crossorigin="anonymous"></script>
+	<style type="text/css">
+		.dv1 {height: 85px; font-size:38px; text-align: center; color: white; background-color: #0052D4; padding: 10px ;}
+		.b1{background-color:#0052D4;border-radius:20px; padding: 10px}
+		.b1:hover{background-color:#12c2e9;}
+	</style>
+</head>
+<body>
+
+
+<!-- Section 1 Start -->
+<div class="container-fluid" style="overflow-x:hidden;">
+	<div class="row">
+		<div class="col-12 dv1 p-3">Prediction Of Literate And illiterate Rate</div>
+	</div>
+</div>
+<!-- Section 1 End -->
+
+<a href="{% url 'Analytics' %}" class="text-decoration-none">
+	<i class="fa-sharp fa-solid fa-circle-arrow-left" style="color:#0052D4; font-size:26px; padding-left:30px; padding-top:15px;"></i>
+</a>
+<br>
+
+<!-- Content Section -->
+<div class="container">
+			<div class="row">
+				<!-- Card 1 -->
+				<div class="col-1"></div>
+				<div class="col-md-5" style="padding-top:38px;">
+					<div class="card shadow" style="width: 25rem;border: 2px solid black; border-radius: 20px;background-color: whitesmoke;">
+						<img src="{% static 'images/Education.gif' %}" class="card-img-top" alt="Image" style="height:260px;width: 100%;">
+						<div class="card-body">
+						<center><h5 class="card-title pb-3">Literate And illiterate (Literate)</h5></center>
+							<center>
+								<a href="{% url 'EduPrediction5' %}" class="btn btn-lg rounded-pill ps-5 pe-5 b1 text-light">Prediction</a>
+							</center>
+						</div>
+					</div>
+				</div>
+
+				<!-- Card 2 -->
+				<div class="col-md-5" style="padding-top:38px;">
+					<div class="card shadow" style="width: 25rem;border: 2px solid black; border-radius: 20px;background-color: whitesmoke;">
+						<img src="{% static 'images/No Education.gif' %}" class="card-img-top" alt="Image" style="height:260px;width:100%;padding:5px;">
+						<div class="card-body">
+						<center><h5 class="card-title pb-3">Literate And illiterate (illiterate)</h5></center>
+							<center>
+								<a href="{% url 'EduPrediction5.1' %}" class="btn btn-lg rounded-pill ps-5 pe-5 b1 text-light">Prediction</a>
+							</center>
+						</div>
+					</div>
+				</div>
+				<div class="col-1"></div>
+			</div>
+	</div>
+
+</body>
+</html>
+{% endblock %}

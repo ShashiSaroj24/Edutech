@@ -1,0 +1,66 @@
+{% extends 'Sidebar.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/d7be2cc6af.js" crossorigin="anonymous"></script>
+<style type="text/css">
+    .dv1 {
+        height: 85px; 
+        font-size:38px; 
+        text-align: center; 
+        color: white; 
+        background-color: #0052D4; 
+        padding: 10px;
+    }
+    .cards{
+        width: 100%;
+        height: 98%;
+    }
+    .cards img {
+        width: 100%;
+        height: 200px; 
+        object-fit: cover; 
+    }
+    .cards-title {
+        font-size: 18px;
+        padding-top: 18px;
+    }
+    a.cards-link {
+        text-decoration: none;
+    }
+</style>
+<body>
+
+<!-- Section 1 Start -->
+<div class="container-fluid" style="overflow-x:hidden;">
+    <div class="row">
+        <div class="col-12 dv1">Courses</div>
+    </div>
+</div>
+
+<div class="container-fluid" style="overflow-x:hidden;">
+    <div class="row">
+{% for i in data %}
+<div class="col-md-4 mt-5">
+    <a href="{% url 'Exams' name=i.Name %}" class="cards-link">
+    <div class="cards shadow">
+  <img src="{{i.Image.url}}" class="card-img-top" alt="images" height="20px">
+  <div class="cards-body">
+  <center><h3 class="cards-title">{{i.Name|truncatechars:100}}</h3></center>  
+</div>
+</div><br>
+</a>
+</div>
+{% endfor %}
+</div><br>
+</div>
+</body>
+</html>
+{% endblock %}

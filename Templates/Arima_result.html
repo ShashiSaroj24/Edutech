@@ -1,0 +1,22 @@
+{% extends 'sidebar.html' %} {% block content %} {%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disease Detection</title>
+  </head>
+  <body>
+    <!-- {% for i in data %}
+    <section class="container" style="padding-right: 30%; margin-top: 7%">
+      <h2 class="c1">{{ i.country }}</h2>
+     
+      {% endfor %} -->
+  <div class="col-md-12 mt-5" style="margin-left: -100px">
+
+      {{graph|safe}}
+      <figure>{{ fig }}</figure></div>
+    </section>
+  </body>
+</html>
+{% endblock %}

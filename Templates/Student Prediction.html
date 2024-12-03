@@ -1,0 +1,528 @@
+{% extends 'Sidebar.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/d7be2cc6af.js" crossorigin="anonymous"></script>
+<style type="text/css">
+    .dv1 {height: 85px; font-size:38px; text-align: center; color: white; background-color: #0052D4; padding: 10px;}
+    .b1{background-color:#0052D4;border-radius:20px;}
+    .b1:hover{background-color:#12c2e9;}
+
+    form {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    label {
+        display: block;
+        margin: 10px 0 5px;
+    }
+    select, input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<body>
+
+<!-- Section 1 Start -->
+<div class="container-fluid" style="overflow-x:hidden;">
+    <div class="row">
+        <div class="col-12 dv1">Prediction Of Students Dropout</div>
+    </div>
+</div><br>
+
+<div class="container" style="overflow-x:hidden">
+  <div class="row" style="padding-left:70px;">
+    <div class="col-12 p-4" style="border-radius:20px; border:2px solid black; background-color:whitesmoke;">
+<form method="POST">
+    {% csrf_token %}
+    
+    <div class="row">
+        <div class="col-md-3">
+            <label for="marital-status">Marital Status</label>
+            <select id="marital-status" name="Marital_status" required>
+                <option value="" selected disabled>Select Option</option>
+                <option value="1">Single</option>
+                <option value="2">Married</option>
+                <option value="3">Widower</option>
+                <option value="4">Divorced </option>
+                <option value="5">Facto Union</option>
+                <option value="6">Legally Separated</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <label for="application-mode">Application Mode</label>
+            <select id="application-mode" name="Application_mode" required>
+                <option value="" selected disabled>Select Option</option>
+                <option value="1">1st Phase - General Contingent</option>
+                <option value="2">Ordinance No. 612/93</option>
+                <option value="3">1st Phase - Special Contingent (Azores Island)</option>
+                <option value="4">Holders of Other Higher Courses</option>
+                <option value="5">Ordinance No. 854-B/99</option>
+                <option value="6">International Student (Bachelor)</option>
+                <option value="7">1st Phase - Special Contingent (Madeira Island)</option>
+                <option value="8">2nd Phase - General Contingent</option>
+                <option value="9">3rd Phase - General Contingent</option>
+                <option value="10">Ordinance No. 533-A/99, Item b2) (Different Plan)</option>
+                <option value="11">Ordinance No. 533-A/99, Item b3 (Other Institution)</option>
+                <option value="12">Over 23 Years Old</option>
+                <option value="13">Transfer</option>
+                <option value="14">Change of Course</option>
+                <option value="15">Technological Specialization Diploma Holders</option>
+                <option value="16">Change of Institution/Course</option>
+                <option value="17">Short Cycle Diploma Holders</option>
+                <option value="18">Change of Institution/Course (International)</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <label for="application-order">Application Order</label>
+            <select id="application-order" name="Application_order" required>
+                <option value="" selected disabled>Select Option</option>
+                <option value="0">First Choice</option>
+                <option value="1">Second Choice</option>
+                <option value="2">Third Choice</option>
+                <option value="3">Fourth Choice</option>
+                <option value="4">Fifth Choice</option>
+                <option value="5">Sixth Choice</option>
+                <option value="6">Seventh Choice</option>
+                <option value="7">Eighth Choice</option>
+                <option value="8">Ninth Choice</option>
+                <option value="9">Last Choice</option>
+            </select>
+        </div>
+
+    <div class="col-md-3">
+    <label for="course">Course</label>
+    <select id="course" name="Course" required>
+        <option value="" selected disabled>Select Option</option>
+        <option value="1">Biofuel Production Technologies</option>
+        <option value="2">Animation and Multimedia Design</option>
+        <option value="3">Social Service (Evening Attendance)</option>
+        <option value="4">Agronomy</option>
+        <option value="5">Communication Design</option>
+        <option value="6">Veterinary Nursing</option>
+        <option value="7">Informatics Engineering</option>
+        <option value="8">Equinculture</option>
+        <option value="9">Management</option>
+        <option value="10">Social Service</option>
+        <option value="11">Tourism</option>
+        <option value="12">Nursing</option>
+        <option value="13">Oral Hygiene</option>
+        <option value="14">Advertising and Marketing Management</option>
+        <option value="15">Journalism and Communication</option>
+        <option value="16">Basic Education</option>
+        <option value="17">Management (Evening Attendance)</option>
+    </select>
+</div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3">
+            <label for="attendance">Daytime/Evening Attendance</label>
+            <select id="attendance" name="Daytime_evening_attendance" required>
+                <option value="" selected disabled>Select Option</option>
+                <option value="1">Daytime</option>
+                <option value="0">Evening</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+    <label for="nationality">Nationality/Language</label>
+    <select id="nationality" name="Nationality" required>
+        <option value="" selected disabled>Select Option</option>
+        <option value="1">Portuguese</option>
+        <option value="2">German</option>
+        <option value="3">Spanish</option>
+        <option value="4">Italian</option>
+        <option value="5">Dutch</option>
+        <option value="6">English</option>
+        <option value="7">Lithuanian</option>
+        <option value="8">Angolan</option>
+        <option value="9">Cape Verdean</option>
+        <option value="10">Guinean</option>
+        <option value="11">Mozambican</option>
+        <option value="12">Santomean</option>
+        <option value="13">Turkish</option>
+        <option value="14">Brazilian</option>
+        <option value="15">Romanian</option>
+        <option value="16">Moldova (Republic of)</option>
+        <option value="17">Mexican</option>
+        <option value="18">Ukrainian</option>
+        <option value="19">Russian</option>
+        <option value="20">Cuban</option>
+        <option value="21">Colombian</option>
+    </select>
+</div>
+
+
+        <div class="col-md-3">
+     <label for="previous-qualification">Previous Qualification</label>
+        <select id="previous-qualification" name="Previous_qualification" required>
+        <option value="" selected disabled>Select Option</option>
+        <option value="1">Secondary Education</option>
+        <option value="2">Higher Education - Bachelor's Degree</option>
+        <option value="3">Higher Education - Degree</option>
+        <option value="4">Higher Education - Master's</option>
+        <option value="5">Higher Education - Doctorate</option>
+        <option value="6">Frequency of Higher Education</option>
+        <option value="7">12th Year of Schooling - Not Completed</option>
+        <option value="8">11th Year of Schooling - Not Completed</option>
+        <option value="9">Other - 11th Year of Schooling</option>
+        <option value="10">10th Year of Schooling</option>
+        <option value="11">10th Year of Schooling - Not Completed</option>
+        <option value="12">Basic Education 3rd Cycle (9th/10th/11th Year) or Equivalent</option>
+        <option value="13">Basic Education 2nd Cycle (6th/7th/8th Year) or Equivalent</option>
+        <option value="14">Technological Specialization Course</option>
+        <option value="15">Higher Education - Degree (1st Cycle)</option>
+        <option value="16">Professional Higher Technical Course</option>
+        <option value="17">Higher Education - Master (2nd Cycle)</option>
+    </select>
+</div>
+
+        <div class="col-md-3">
+        <label for="mother-qualification">Mother's Qualification</label>
+        <select id="mother-qualification" name="Mothers_qualification" required>
+        <option value="" selected disabled>Select Option</option>
+        <option value="1">Secondary Education - 12th Year of Schooling or Eq.</option>
+        <option value="2">Higher Education - Bachelor's Degree</option>
+        <option value="3">Higher Education - Degree</option>
+        <option value="4">Higher Education - Master's</option>
+        <option value="5">Higher Education - Doctorate</option>
+        <option value="6">Frequency of Higher Education</option>
+        <option value="7">12th Year of Schooling - Not Completed</option>
+        <option value="8">11th Year of Schooling - Not Completed</option>
+        <option value="9">7th Year (Old)</option>
+        <option value="10">Other - 11th Year of Schooling</option>
+        <option value="11">10th Year of Schooling</option>
+        <option value="12">General Commerce Course</option>
+        <option value="13">Basic Education 3rd Cycle (9th/10th/11th Year) or Equivalent</option>
+        <option value="14">Technical-Professional Course</option>
+        <option value="15">7th Year of Schooling</option>
+        <option value="16">2nd Cycle of the General High School Course</option>
+        <option value="17">9th Year of Schooling - Not Completed</option>
+        <option value="18">8th Year of Schooling</option>
+        <option value="19">Unknown</option>
+        <option value="20">Can't Read or Write</option>
+        <option value="21">Can Read Without Having a 4th Year of Schooling</option>
+        <option value="22">Basic Education 1st Cycle (4th/5th Year) or Equivalent</option>
+        <option value="23">Basic Education 2nd Cycle (6th/7th/8th Year) or Equivalent</option>
+        <option value="24">Technological Specialization Course</option>
+        <option value="25">Higher Education - Degree (1st Cycle)</option>
+        <option value="26">Specialized Higher Studies Course</option>
+        <option value="27">Professional Higher Technical Course</option>
+        <option value="28">Higher Education - Master (2nd Cycle)</option>
+        <option value="29">Higher Education - Doctorate (3rd Cycle)</option>
+    </select>
+</div>
+
+    </div>
+
+    <div class="row">
+    <div class="col-md-3">
+    <label for="father-qualification">Father's Qualification</label>
+    <select id="father-qualification" name="Fathers_qualification" required>
+        <option value="" selected disabled>Select Option</option>
+        <option value="1">Secondary Education - 12th Year of Schooling or Eq.</option>
+        <option value="2">Higher Education - Bachelor's Degree</option>
+        <option value="3">Higher Education - Degree</option>
+        <option value="4">Higher Education - Master's</option>
+        <option value="5">Higher Education - Doctorate</option>
+        <option value="6">Frequency of Higher Education</option>
+        <option value="7">12th Year of Schooling - Not Completed</option>
+        <option value="8">11th Year of Schooling - Not Completed</option>
+        <option value="9">7th Year (Old)</option>
+        <option value="10">Other - 11th Year of Schooling</option>
+        <option value="11">2nd Year Complementary High School Course</option>
+        <option value="12">10th Year of Schooling</option>
+        <option value="13">General Commerce Course</option>
+        <option value="14">Basic Education 3rd Cycle (9th/10th/11th Year) or Equiv.</option>
+        <option value="15">Complementary High School Course</option>
+        <option value="16">Technical-Professional Course</option>
+        <option value="17">Complementary High School Course - Not Concluded</option>
+        <option value="18">7th Year of Schooling</option>
+        <option value="19">2nd Cycle of the General High School Course</option>
+        <option value="20">9th Year of Schooling - Not Completed</option>
+        <option value="21">8th Year of Schooling</option>
+        <option value="22">General Course of Administration and Commerce</option>
+        <option value="23">Supplementary Accounting and Administration</option>
+        <option value="24">Unknown</option>
+        <option value="25">Can't Read or Write</option>
+        <option value="26">Can Read Without Having a 4th Year of Schooling</option>
+        <option value="27">Basic Education 1st Cycle (4th/5th Year) or Equiv.</option>
+        <option value="28">Basic Education 2nd Cycle (6th/7th/8th Year) or Equiv.</option>
+        <option value="29">Technological Specialization Course</option>
+        <option value="30">Higher Education - Degree (1st Cycle)</option>
+        <option value="31">Specialized Higher Studies Course</option>
+        <option value="32">Professional Higher Technical Course</option>
+        <option value="33">Higher Education - Master (2nd Cycle)</option>
+        <option value="34">Higher Education - Doctorate (3rd Cycle)</option>
+    </select>
+</div>
+
+
+    <div class="col-md-3">
+    <label for="mother-occupation">Mother's Occupation</label>
+    <select id="mother-occupation" name="Mothers_occupation" required>
+    <option value="" selected disabled>Select Option</option>
+    <option value="1">Student</option>
+    <option value="2">Representatives of the Legislative Power and Executive Bodies, Directors, Directors and Executive Managers</option>
+    <option value="3">Specialists in Intellectual and Scientific Activities</option>
+    <option value="4">Intermediate Level Technicians and Professions</option>
+    <option value="5">Administrative Staff</option>
+    <option value="6">Personal Services, Security and Safety Workers and Sellers</option>
+    <option value="7">Farmers and Skilled Workers in Agriculture, Fisheries and Forestry</option>
+    <option value="8">Skilled Workers in Industry, Construction and Craftsmen</option>
+    <option value="9">Installation and Machine Operators and Assembly Workers</option>
+    <option value="10">Unskilled Workers</option>
+    <option value="11">Armed Forces Professions</option>
+    <option value="12">Other Situation</option>
+    <option value="13">(blank)</option>
+    <option value="14">Health Professionals</option>
+    <option value="15">Teachers</option>
+    <option value="16">Specialists in Information and Communication Technologies (ICT)</option>
+    <option value="17">Intermediate Level Science and Engineering Technicians and Professions</option>
+    <option value="18">Technicians and Professionals of Intermediate Level of Health</option>
+    <option value="19">Intermediate Level Technicians from Legal, Social, Sports, Cultural and Similar Services</option>
+    <option value="20">Office Workers, Secretaries in General and Data Processing Operators</option>
+    <option value="21">Data, Accounting, Statistical, Financial Services and Registry-related Operators</option>
+    <option value="22">Other Administrative Support Staff</option>
+    <option value="23">Personal Service Workers</option>
+    <option value="24">Sellers</option>
+    <option value="25">Personal Care Workers and the Like</option>
+    <option value="26">Skilled Construction Workers and the Like, Except Electricians</option>
+    <option value="27">Skilled Workers in Printing, Precision Instrument Manufacturing, Jewelers, Artisans and the Like</option>
+    <option value="28">Workers in Food Processing, Woodworking, Clothing and Other Industries and Crafts</option>
+    <option value="29">Cleaning Workers</option>
+    <option value="30">Unskilled Workers in Agriculture, Animal Production, Fisheries and Forestry</option>
+    <option value="31">Unskilled Workers in Extractive Industry, Construction, Manufacturing and Transport</option>
+    <option value="32">Meal Preparation Assistants</option>
+</select>
+</div>
+
+
+    <div class="col-md-3">
+    <label for="father-occupation">Father's Occupation</label>
+    <select id="father-occupation" name="Fathers_occupation" required>
+    <option value="" selected disabled>Select Option</option>
+    <option value="1">Student</option>
+    <option value="2">Representatives of the Legislative Power and Executive Bodies, Directors, Directors and Executive Managers</option>
+    <option value="3">Specialists in Intellectual and Scientific Activities</option>
+    <option value="4">Intermediate Level Technicians and Professions</option>
+    <option value="5">Administrative Staff</option>
+    <option value="6">Personal Services, Security and Safety Workers and Sellers</option>
+    <option value="7">Farmers and Skilled Workers in Agriculture, Fisheries and Forestry</option>
+    <option value="8">Skilled Workers in Industry, Construction and Craftsmen</option>
+    <option value="9">Installation and Machine Operators and Assembly Workers</option>
+    <option value="10">Unskilled Workers</option>
+    <option value="11">Armed Forces Professions</option>
+    <option value="12">Other Situation</option>
+    <option value="13">(blank)</option>
+    <option value="14">Armed Forces Officers</option>
+    <option value="15">Armed Forces Sergeants</option>
+    <option value="16">Other Armed Forces Personnel</option>
+    <option value="17">Directors of Administrative and Commercial Services</option>
+    <option value="18">Hotel, Catering, Trade and Other Services Directors</option>
+    <option value="19">Specialists in the Physical Sciences, Mathematics, Engineering and Related Techniques</option>
+    <option value="20">Health Professionals</option>
+    <option value="21">Teachers</option>
+    <option value="22">Specialists in Finance, Accounting, Administrative Organization, Public and Commercial Relations</option>
+    <option value="23">Intermediate Level Science and Engineering Technicians and Professions</option>
+    <option value="24">Technicians and Professionals of Intermediate Level of Health</option>
+    <option value="25">Intermediate Level Technicians from Legal, Social, Sports, Cultural and Similar Services</option>
+    <option value="26">Information and Communication Technology Technicians</option>
+    <option value="27">Office Workers, Secretaries in General and Data Processing Operators</option>
+    <option value="28">Data, Accounting, Statistical, Financial Services and Registry-related Operators</option>
+    <option value="29">Other Administrative Support Staff</option>
+    <option value="30">Personal Service Workers</option>
+    <option value="31">Sellers</option>
+    <option value="32">Personal Care Workers and the Like</option>
+    <option value="33">Protection and Security Services Personnel</option>
+    <option value="34">Market-oriented Farmers and Skilled Agricultural and Animal Production Workers</option>
+    <option value="35">Farmers, Livestock Keepers, Fishermen, Hunters and Gatherers, Subsistence</option>
+    <option value="36">Skilled Construction Workers and the Like, Except Electricians</option>
+    <option value="37">Skilled Workers in Metallurgy, Metalworking and Similar</option>
+    <option value="38">Skilled Workers in Electricity and Electronics</option>
+    <option value="39">Workers in Food Processing, Woodworking, Clothing and Other Industries and Crafts</option>
+    <option value="40">Fixed Plant and Machine Operators</option>
+    <option value="41">Assembly Workers</option>
+    <option value="42">Vehicle Drivers and Mobile Equipment Operators</option>
+    <option value="43">Unskilled Workers in Agriculture, Animal Production, Fisheries and Forestry</option>
+    <option value="44">Unskilled Workers in Extractive Industry, Construction, Manufacturing and Transport</option>
+    <option value="45">Meal Preparation Assistants</option>
+    <option value="46">Street Vendors (Except Food) and Street Service Providers</option>
+</select>
+
+</div>
+
+
+    <div class="col-md-3">
+    <label for="displaced">Displaced</label>
+    <select id="displaced" name="Displaced" required>
+        <option value="" selected disabled>Select Option</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+</div>
+
+    <div class="row">
+    <div class="col-md-3">
+    <label for="special-needs">Educational Special Needs</label>
+    <select id="special-needs" name="special_needs" required>
+        <option value="" selected disabled>Select Option</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+    <div class="col-md-3">
+    <label for="International">International</label>
+    <select id="International" name="international" required>
+        <option value="" selected disabled>Select Option</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+    <div class="col-md-3">
+    <label for="debtor">Debtor</label>
+    <select id="debtor" name="debtor" required>
+        <option value="" selected disabled>Select Option</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+    <div class="col-md-3">
+    <label for="tuition-fees">Tuition Fees Up to Date</label>
+    <select id="tuition-fees" name="tuition_fees" required>
+        <option value="" selected disabled>Select Option</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+</div>
+
+   <div class="row">
+    <div class="col-md-3">
+    <label for="gender">Gender</label>
+    <select id="gender" name="gender" required>
+        <option value="" selected disabled>Select Option</option>
+        <option value="1">Male</option>
+        <option value="0">Female</option>
+    </select>
+</div>
+
+    <div class="col-md-3">
+    <label for="scholarship-holder">Scholarship Holder</label>
+    <select id="scholarship-holder" name="scholarship_holder" required>
+        <option value="" selected disabled>Select Option</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<div class="col-md-3">
+    <label for="age-enrollment">Age at Enrollment</label>
+    <input type="number" id="age-enrollment" name="age_enrollment" min="0" max="100" placeholder="Enter Digit" required>
+</div>
+
+    <div class="col-md-3">
+    <label for="unemployment-rate">Unemployment Rate</label>
+    <input type="number" id="unemployment_rate" name="unemployment_rate" min="0" max="100" step="0.01" placeholder="Enter Digit" required>
+</div>
+</div>
+
+    <div class="row">
+       <div class="col-md-3">
+    <label for="curricular-units-1st-enrolled">Curricular Units 1st Sem (Enrolled)</label>
+    <input type="number" id="curricular-units-1st-enrolled" name="curricular_units_1st_enrolled" min="0" placeholder="Enter Digit" required>
+    </input>
+</div>
+   
+   
+   <div class="col-md-3">
+    <label for="curricular-units-1st-approved">Curricular Units 1st Sem (Approved)</label>
+    <input type="number" id="curricular-units-1st-grade" name="curricular_units_1st_approved" min="0" placeholder="Enter Digit" required>
+    </input>
+</div>
+    <div class="col-md-3">
+    <label for="curricular-units-1st-grade">Curricular Units 1st Sem (Grades (0-4))</label>
+    <input type="number" id="curricular-units-1st-grade" name="curricular_units_1st_grade" min="0" max="4" step="0.01" placeholder="Enter Digit" required title="Fill (0-4)">
+    </input>
+</div>
+
+    <div class="col-md-3">
+    <label for="curricular-units-1st-without-evaluations">Curricular Units 1st Sem (Without Evaluations)</label>
+    <input type="number" id="curricular-units-1st-without-evaluations" name="curricular_units_1st_without_evaluations" min="0" placeholder="Enter Digit" required>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+    <label for="curricular-units-2nd-enrolled">Curricular Units 2nd Sem (Enrolled)</label>
+<input type="number" id="curricular-units-2nd-enrolled" name="curricular_units_2nd_enrolled" min="0" placeholder="Enter Digit" required>
+</div>
+
+<div class="col-md-3">
+    <label for="curricular-units-2nd-approved">Curricular Units 2nd Sem (Approved)</label>
+    <input type="number" id="curricular-units-2nd-approved" name="curricular_units_2nd_approved" min="0" placeholder="Enter Digit" required>
+</div>
+     <div class="col-md-3">
+    <label for="curricular-units-2nd-grade">Curricular Units 2nd Sem (Grades (0-4))</label>
+    <input type="number" id="curricular-units-2nd-grade" name="curricular_units_2nd_grade" min="0" max="4" step="0.01" placeholder="Enter Digit" required title="Fill (0-4)">
+    </input>
+</div>
+
+ <div class="col-md-3">
+    <label for="curricular-units-2nd-without-evaluations">Curricular Units 2nd Sem (Without Evaluations)</label>
+    <input type="number" id="curricular-units-2nd-without-evaluations" name="curricular_units_2nd_without_evaluations" min="0" placeholder="Enter Digit" required>
+</div>
+</div>
+
+
+<div class="row">
+<div class="col-md-3">
+    <label for="inflation-rate">Inflation Rate</label>
+    <input type="number" id="inflation-rate" name="inflation_rate" min="0" max="100" step="0.01" placeholder="Enter Digit" required>
+</div>
+   
+    <div class="col-md-3">
+    <label for="gdp">GDP</label>
+    <input type="number" id="gdp" name="gdp" min="0" max="100" step="0.01" placeholder="Enter Detail" required>
+</div>
+    </div>
+
+   <div class="col-12 pt-3">
+           <center><button type="submit" class="btn btn-lg rounded-pill ps-5 pe-5 b1 text-light">Submit</button></center>
+        </div>
+</form>
+</div>
+</div>
+</div><br>
+</body>
+</html>
+{% endblock %}

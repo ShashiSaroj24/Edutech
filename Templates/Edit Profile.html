@@ -1,0 +1,115 @@
+{%extends 'Sidebar.html' %}
+<!DOCTYPE html>
+{%load static %}
+{% block content %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/d7be2cc6af.js" crossorigin="anonymous"></script>
+<body>
+<style type="text/css">
+.b1{background-color:#5194E8;border-radius:20px; padding: 10px}
+.b1:hover{background-color:#8A63F0}
+.file::-webkit-file-upload-button{
+	background-image:linear-gradient(40deg,#2761C9,#01C1FC);color: white;border-radius:20px;
+	border: none;}
+</style>
+
+<!-- Section 1 Start -->
+<div class="container-fluid" style="overflow-x:hidden";>
+<div class="row pt-5 pb-5">
+	<div class="col-1"></div>
+	<div class="col-4 p-4" style="border-top-left-radius: 25px; border-bottom-left-radius: 25px; background-color: #00DBDE;background-image: linear-gradient(110deg, #00DBDE 0%, #FC00FF 100%);;border: 2px solid black; box-shadow:  0 0 20px 0 black;"><br><br><br><br><br>
+		{% if user.ProfileImg %}
+			<center><img src="{{user.ProfileImg.url}}" class="rounded-circle" height="240px" width="235px" style="border:5px solid black;"></center>
+			{% else %}
+			<center><img src="default" class="rounded-circle" height="240px" width="235px" style="border:5px solid black;"></center>
+			{% endif %}
+		<form method="POST" action="" enctype="multipart/form-data">
+			{% csrf_token %}
+				<center><input type="file" id="file"  name="fs" class="mt-5 form-control file" style="border-radius:20px;border:3px solid black; background-color:lightgrey;"></center>
+					<div id="file-selected-message" style="display: none; margin-left: 150px;">
+						<p style="padding-top: 20px;">File selected:&nbsp; <span id="file-name"></span></p>
+					</div>
+					<br>
+				
+</div>
+
+	<div class="col-6 p-4" style="border-top-right-radius: 25px;border-bottom-right-radius: 25px;border:2px solid black;background-color: ghostwhite;box-shadow:0 0 20px 0 black;" >
+	<center><h3 style="color:#353CB5;padding-bottom: 2px;">EDIT PROFILE</h3></center>
+	<form method="POST" action="">
+		{% csrf_token %}
+		{% if res %}
+	<div class="alert alert-success" role="alert">
+	{{res}}
+</div>
+{% endif %}
+{% if Error %}
+		<div class="alert alert-danger" role="alert">
+	{{Error}}
+</div>
+{% endif %}
+<label>NAME:</label>
+<div class="input-group flex-nowrap">
+	 <span class="input-group-text" id="addon-wrapping"><i class="fa-duotone fa-solid fa-user"></i></span>
+  <input type="text" class="form-control rounded-0" name="nm" value="{{user.Name}}" required>
+</div><br>
+
+<label>EMAIL:</label>
+<div class="input-group flex-nowrap">
+   <span class="input-group-text" id="addon-wrapping"><i class="fa-sharp fa-solid fa-envelope"></i></span>
+  <input type="readonly" class="form-control rounded-0" name="em" value="{{user.Email}}" required>
+</div><br>
+
+<div class="row">
+<div class="col-6">
+<label>PHONE NO: </label>
+<div class="input-group flex-nowrap">
+	 <span class="input-group-text" id="addon-wrapping"><i class="fa-sharp fa-solid fa-phone"></i></span>
+  <input type="text" class="form-control rounded-0" name="pn" value="{{user.PhoneNo}}" required>
+</div><br></div>
+
+<div class="col-6">
+<label>PINCODE: </label>
+<div class="input-group flex-nowrap">	
+	 <span class="input-group-text" id="addon-wrapping"><i class="fa-sharp fa-solid fa-location-pin-lock"></i></span>
+  <input type="text" class="form-control rounded-0" name="pc" value="{{user.Pincode}}" required>
+</div><br></div>
+</div>
+
+<div class="row">
+<div class="col-6">
+<label>DOB: </label>
+<div class="input-group flex-nowrap">
+	 <span class="input-group-text" id="addon-wrapping"><i class="fa-sharp fa-solid fa-calendar-days"></i></span>
+  <input type="date" class="form-control rounded-0" name="dob" value="{{user.DOB}}" required>
+</div><br></div>
+
+<div class="col-6">
+<label>CITY: </label>
+<div class="input-group flex-nowrap">
+	 <span class="input-group-text" id="addon-wrapping"><i class="fa-sharp fa-solid fa-city"></i></span>
+  <input type="text" class="form-control rounded-0" name="city" value="{{user.City}}" required>
+</div><br></div>
+</div>
+
+<label>ADDRESS: </label>
+<div class="input-group flex-nowrap">	
+	 <span class="input-group-text" id="addon-wrapping"><i class="fa-sharp fa-solid fa-location-dot"></i></span>
+  <textarea type="text" class="form-control rounded-0" name="add" value="{{user.Address}}" required></textarea>
+</div><br>
+
+<center><button type="submit " class="btn btn-lg rounded-pill ps-5 pe-5 b1 text-light" style="">Submit</button></center>
+</form>
+</div>
+<div class="col-1"></div>
+</div>
+</div>
+<!-- Section 1 End -->
+</body>
+</html>
+{% endblock %}

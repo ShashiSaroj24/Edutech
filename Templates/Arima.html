@@ -1,0 +1,59 @@
+{% extends 'sidebar.html' %} {% block content %} {%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rice Prediction</title>
+  </head>
+  <body>
+    <div class="text-end m-3">
+      <img class="text-end m-3" />Welcome,<strong> {{user.name}}</strong>
+      <a href="#" required>
+        <img
+          src="#"
+          style="height: 70px; width: 70px; border-radius: 50%" /></a>
+    </div>
+    <section class="container" style="padding-right: 20%">
+      <form method="POST" action class enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 class="mt-0 display-3">Phosphorous Use Prediction</h1>
+        <br />
+        <p
+          style="padding-top: 20px;text-align: justify;font-weight: 500;padding-bottom: 40px;font-size: large;width: 100%;padding-right: 5%;">Predict
+          the Phosphorus Future!
+          Enter a number of years, and see a projected trend
+          in a country's Phosphorus fertilizer use (kg/ha).
+          Select your country and years - unveil the future of Phosphorus
+          use!</p>
+
+        <select name="country" class="form-select form-select-lg fs-5 mb-4">
+          <option selected class="mb-5">
+            Select a country for phosphate use prediction
+          </option>
+
+          {% for i in data %}
+          <option value="{{i}}">{{i}}</option>
+          {% endfor %}
+        </select>
+        <div class="form-floating mb-3">
+          <input
+            type="number  "
+            class="form-control"
+            id="floatingInput"
+            placeholder="Upload Image"
+            name="steps" />
+          <label for="floatingInput">Enter the years</label>
+        </div>
+
+        <br />
+        <button
+          type="submit"
+          class="btn btn-warning text-dark-emphasis btn-lg d-grid col-6 mx-sm-auto">
+          Check for Predicted Production
+        </button>
+      </form>
+    </section>
+  </body>
+</html>
+{% endblock %}

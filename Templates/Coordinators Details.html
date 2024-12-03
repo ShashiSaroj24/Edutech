@@ -1,0 +1,130 @@
+{%extends 'Base.html' %}
+{% block content %}
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/d7be2cc6af.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
+<style>
+        .dv1{font-size:62px; padding-top:80px;}
+        .dv2{background-color: #FF7350; border-radius:30px; padding: 9px 10px;}  
+        a{ text-decoration: none; font-size:14px }
+        .p1{font-size: 24px; font-weight: bold; margin-bottom: 5px;}
+        .p2{font-size: 14px; color: #d1d1d1;}
+        .s1 { background-color:whitesmoke; color: white; padding: 40px 0; font-size: 24px; font-weight: bold; color: #FF7350; }
+        .d1{ line-height: 1.6; margin-bottom: 30px; color: black; }
+        .d2{ line-height: 1.6; color: black; }
+         .card { width: 100%; height: 100%; transition: transform 0.2s ease; }
+        .card:hover { transform: scale(1.05); }
+        .icon-circle { width: 85px; height: 80px; border-radius: 50%; display: flex; align-items: center;justify-content: center; margin: 0 auto 10px auto; }
+    </style>
+</head>
+<body style="overflow-x:hidden;">
+
+<!-- Section 1 Start-->
+<div class="container-fluid" style="overflow-x:hidden";>
+<div class="row" style=" background-image: url({%static 'images/edu5.png' %} ); background-size: cover; height: 100%; height: 300px;">
+    <div class="col-3"></div>
+    <div class="col-6 dv1 text-center text-light">National Coordinators</div>
+    <div class="col-3"></div>
+
+<nav class="container-fluid" style="overflow-x:hidden">
+    <div class="row">
+        <div class="col-5"></div>
+        <div class="col-2 dv2">
+            <b><a class="text-light ps-4" href="{% url 'Home' %}">Home</a></b>&emsp;
+            <b class="text-light border-start ps-3" style="font-size:12px;">Coordinators</b></div>
+        <div class="col-5"></div></div></nav>
+        </div>
+        </div>
+<!-- Section 1 End -->
+
+
+<!-- Section 2 Start-->
+<div class="container-fluid" style="overflow-x:hidden";>
+<div class="row text-center">
+    <div class="s1">
+    <h4 data-aos="fade-down">National Coordinators</h4>
+    <p data-aos="fade-up" class="d1 ps-5 pe-5 pt-2"> In order to ensure best quality content are produced and delivered, nine National Coordinators have been appointed. They are AICTE for self-paced and international courses, NPTEL for engineering, UGC for non technical post-graduation education, CEC for under-graduate education, NCERT & NIOS for school education, IGNOU for out of the school students, IIMB for management studies and NITTTR for Teacher Training programme.</p>
+
+    <div class="row">
+    <div class="col-1"></div>
+    <div data-aos="fade-left" class="col-md-2">
+        <div class="icon-circle">
+        <img src="{%static 'images\icons1.png' %}" class="card-img-top" alt="image" style="height:80px; width:80px">
+        </div>
+        <p class="p1 text-center" style="color: #125875;">{{Data.Partnering_Institutes}}</p>
+        <p class="p2 text-center" style="color: #125875;">Partnering Institutes</p>
+    </div>
+
+    <div data-aos="fade-left" class="col-md-2">
+        <div class="icon-circle">
+        <img src="{%static 'images\icons2.png' %}" class="card-img-top" alt="image" style="height:80px; width:80px">
+        </div>
+        <p class="p1 text-center" style="color: #125875;">{{Data.Completed_Courses}}</p>
+        <p class="p2 text-center" style="color: #125875;">Completed Courses</p>
+    </div>
+
+    <div data-aos="fade-left" class="col-md-2">
+        <div class="icon-circle">
+        <img src="{%static 'images\icons3.png' %}" class="card-img-top" alt="image" style="height:80px; width:80px">
+        </div>
+        <p class="p1 text-center" style="color: #125875;">{{Data.Student_Enrollment}}</p>
+        <p class="p2 text-center" style="color: #125875;">Student Enrollment</p>
+    </div>
+
+    <div data-aos="fade-left" class="col-md-2">
+        <div class="icon-circle">
+        <img src="{%static 'images\icons4.png' %}" class="card-img-top" alt="image" style="height:80px; width:80px">
+        </div>
+        <p class="p1 text-center" style="color: #125875;">{{Data.Exam_Registrations}}</p>
+        <p class="p2 text-center" style="color: #125875;">Exam Registrations</p>
+    </div>
+
+     <div data-aos="fade-left" class="col-md-2">
+        <div class="icon-circle">
+        <img src="{%static 'images\icons5.png' %}" class="card-img-top" alt="image" style="height:80px; width:80px">
+        </div>
+        <p class="p1 text-center" style="color: #125875;">{{Data.Successful_Certification}}</p>
+        <p class="p2 text-center" style="color: #125875;">Successful Certification</p>
+    </div>
+    <div class="col-1"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2 End -->
+
+<!-- Section 3 Start -->
+
+    <div class="row">
+        <div data-aos="zoom-in-up" class="col-md-2 pt-3 pb-3 ps-4">
+                   <center><img src="{{Data.Logo.url}}" alt="Logo" style="width:146px; height:150px;"></center> 
+                    <a href="{{Data.Website_Link}}" target="_blank" class="btn btn-outline-primary ps-2 pe-2 rounded-pill">VIEW COURSE CATALOG</a>
+                </div>
+
+    <div data-aos="fade-right" class="col-md-6 pt-3 pb-3">
+        <h4>{{Data.Title}}</h4>
+        <p class="d2">{{Data.Description1}}</p>
+    </div>
+
+ <div data-aos="fade-down" class="col-md-4 pt-3 pb-3">
+       <p class="d1"><b> Contact Information:</b><br>
+        Website: <a href="{{Data.Website}}" target="_blank">{{Data.Website}}</a><br>
+        Address: {{Data.Address}}<br>
+        Email: <a href="mailto:{{ Data.Email }}">{{Data.Email}}</a><br>
+        Phone: {{Data.PhoneNo}}</p>
+    </div>
+</div>
+<!-- Section 3 End -->
+
+</body>
+</html>
+{%endblock %}
+
+

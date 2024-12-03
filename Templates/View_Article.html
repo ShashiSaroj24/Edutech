@@ -1,0 +1,25 @@
+{%extends 'Base.html' %}
+{%block content%}
+{%load static%}
+
+<body style="overflow-x:hidden;">
+<div class="container" style="">
+	<div class="row">
+
+<div data-aos="fade-right" class="col-md-12 mt-5 text-center" style="padding-left:125px; padding-right: 125px;">
+	<div class="card shadow" style="width:92%;">
+  <img src="{{data.Upload.url}}" class="card-img-top" alt="images" height="380px">
+  <div class="card-body">
+    <h5 class="card-title">{{data.Title}}</h5>
+   <b><p style="color:#125875" class="card-text">{{data.Article}}</p></b> 
+  </div>
+</div>
+</div>
+
+</div>
+</div>
+<br>
+{% endblock %}
+
+</body>
+</html>

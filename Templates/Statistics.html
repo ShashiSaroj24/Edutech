@@ -1,0 +1,92 @@
+{% extends 'Sidebar.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/d7be2cc6af.js" crossorigin="anonymous"></script>
+<style type="text/css">
+    .dv1 {height: 85px; font-size:38px; text-align: center; color: white; background-color: #0052D4; padding: 10px;}
+    .b1{background-color:#0052D4;border-radius:20px;}
+    .b1:hover{background-color:#12c2e9;}
+</style>
+
+<body>
+
+<!-- Section 1 Start -->
+<div class="container-fluid" style="overflow-x:hidden;">
+    <div class="row">
+        <div class="col-12 dv1">Statistics</div>
+    </div>
+</div>
+
+    <!-- Content Section -->
+    <div class="container my-4">
+        <form method="POST" action="">
+           {% csrf_token %}
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-8">
+                 <h3>Select Your Statistics</h3>
+                <select class="form-select" style="border:2px solid #0052D4;" aria-label="Default select example" name="se" required> 
+                    {% if res %}
+                <option>{{res}}</option>   
+                {% else %}   
+  <option value="" selected>Choose Statistics Category</option>
+  {% endif %}
+
+   {% for i in data %}
+  <option value="{{i.Statistic}}">{{i.Statistic}}</option>
+  {% endfor %}
+</select>
+            </div>
+            <div class="col-3" style="padding-top:35px;">
+                <button type="submit" class="btn btn-lg rounded-pill ps-5 pe-5 b1 text-light">Submit</button>
+            </div>
+        </div>
+    </form>
+    </div>
+<div class="container">
+<div class="row">
+{% if search_data %}
+            <div class="col-12">
+        <!-- Statistics Table -->
+        <table class="table table-bordered table-hover">
+            <thead class="table">
+                <tr>
+                    <th scope="col" style="background-color:#0052D4;text-align: center;color: white;">S.No.</th>
+                    <th scope="col" style="background-color:#0052D4;text-align: center;color: white;">Title</th>
+                    <th scope="col" style="background-color:#0052D4;text-align: center;color: white;">Year</th>
+                    <th scope="col" style="background-color:#0052D4;text-align: center;color: white;">Report in PDF</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for i in search_data %}
+                <tr>
+                    <td style="text-align: center;">{{forloop.counter}}</td>
+                    <td style="text-align: center;"  value="{{i.Title}}" >{{i.Title}}</td>
+                    <td style="text-align: center;"  value="{{i.Year}}">{{i.Year}}</td>
+                    <td style="text-align: center;"  value="{{i.pdf}}"><i class="fa-sharp fa-regular fa-file-pdf" style="font-size:20px;color: red"></i>&emsp;</i><a target="_blank" href="{{i.pdf.url}}" class="text-decoration-none" style="color:black;">Download</a></td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    </div>
+</div><br>
+<!-- Section 1 End -->
+
+</body>
+</html>
+{% endblock %}

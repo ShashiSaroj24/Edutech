@@ -1,0 +1,103 @@
+def Student_Dropout(request):
+    if request.method == 'POST':
+        # Collect data directly from POST request
+        marital_status = int(request.POST.get('Marital_status'))
+        application_order = int(request.POST.get('Application_order'))
+        application_mode = int(request.POST.get('Application_mode'))  # Make sure this is included
+        course = int(request.POST.get('Course'))
+        Nationality = int(request.POST.get('Nationality'))
+        daytime_evening_attendance = int(request.POST.get('Daytime_evening_attendance'))
+
+        # Encode previous qualification
+        previous_qualification = int(request.POST.get('Previous_qualification'))
+        mothers_qualification = int(request.POST.get('Mothers_qualification'))
+        fathers_qualification = int(request.POST.get('Fathers_qualification'))
+        mothers_occupation = int(request.POST.get('Mothers_occupation'))
+        fathers_occupation = int(request.POST.get('Fathers_occupation'))
+        displaced = int(request.POST.get('Displaced'))
+        Educational_Needs = int(request.POST.get('special_needs'))
+        Debtors = int(request.POST.get('debtor'))
+        Tution_fees = int(request.POST.get('tuition_fees'))
+        Gender = int(request.POST.get('gender'))
+        Scholarship = int(request.POST.get('scholarship_holder'))
+        International = int(request.POST.get('international'))
+        Unemployment = float(request.POST.get('unemployment_rate'))
+        Age_Enroll = int(request.POST.get('age_enrollment'))
+        Inflation = float(request.POST.get('inflation_rate'))
+        GDP = float(request.POST.get('gdp'))
+
+        # Curricular units
+        curricular_units_1st_enrolled = int(request.POST.get('curricular_units_1st_enrolled'))
+        curricular_units_1st_approved = int(request.POST.get('curricular_units_1st_approved'))
+
+        # Encode the grades
+        curricular_units_1st_grade = float(request.POST.get('curricular_units_1st_grade'))
+        curricular_units_1st_without_evaluations = int(request.POST.get('curricular_units_1st_without_evaluations'))
+        curricular_units_2nd_enrolled = int(request.POST.get('curricular_units_2nd_enrolled'))
+        curricular_units_2nd_approved = int(request.POST.get('curricular_units_2nd_approved'))
+        curricular_units_2nd_grade_str = request.POST.get('curricular_units_2nd_grade')
+        
+        if curricular_units_2nd_grade_str is None or curricular_units_2nd_grade_str == '':
+            curricular_units_2nd_grade = 0.0  # or some appropriate default value
+        else:
+            curricular_units_2nd_grade = float(curricular_units_2nd_grade_str)
+        
+        curricular_units_2nd_without_evaluations = int(request.POST.get('curricular_units_2nd_without_evaluations'))
+
+        # Prepare feature array for prediction
+        features = np.array([[
+            marital_status,
+            application_order,
+            application_mode,
+            course,
+            Nationality,
+            daytime_evening_attendance,
+            previous_qualification,
+            mothers_qualification,
+            fathers_qualification,
+            mothers_occupation,
+            fathers_occupation,
+            displaced,
+            Educational_Needs,
+            Debtors,
+            Tution_fees,
+            Gender,
+            Scholarship,
+            International,
+            Unemployment,
+            Age_Enroll,
+            Inflation,
+            GDP,
+            curricular_units_1st_enrolled,
+            curricular_units_1st_approved,
+            curricular_units_1st_grade,
+            curricular_units_1st_without_evaluations,
+            curricular_units_2nd_enrolled,
+            curricular_units_2nd_approved,
+            curricular_units_2nd_grade,
+            curricular_units_2nd_without_evaluations
+        ]])
+
+        # Print the number of features for debugging
+        print("Number of Features Collected:", features.shape[1])  # Should be 30
+
+        # Check the number of features
+        if features.shape[1] != 30:
+            raise ValueError(f"Expected 30 features, but got: {features.shape[1]}")
+
+        # Scaling and polynomial transformation
+        features_poly = poly.transform(features)
+        print("Transformed Features Shape:", features_poly.shape)  # Ensure it matches expected shape
+
+        # Make the prediction using the loaded stacking classifier
+        prediction = stacking_classifier.predict(features_poly)
+        result = prediction[0]  # Get the prediction result
+        result=label_encoder.inverse_transform([result])
+        result = result[0]
+        print(result)
+
+        # Render the result page with the prediction result
+        return render(request, 'result.html', {'result': result})
+
+    # For GET requests, render the form
+    return render(request, 'Student Dropout.html')
