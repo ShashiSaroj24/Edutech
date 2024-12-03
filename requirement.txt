@@ -1,8 +1,9 @@
+django
+django-jazzmin
+django-ckeditor>=6.0.0
+plotly==5.17.0
+statsmodels>=0.14.0
+newsapi-python==0.2.6
 
-pip install django-jazzmin
-pip install django-ckeditor
-pip install plotly
-pip install statsmodels
-pip install newsapi-python
 
 
